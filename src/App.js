@@ -1,22 +1,25 @@
 import React from 'react';
 
-const style = {
-  margin: '0 auto',
-  width: '640px',
-};
-
 function App() {
   return (
-    <div style={style}>
+    <AppBoundary>
       <header className='big-font'>
-        <Title title='My TODO App' />
+        <Title>My TODO App</Title>
       </header>
-    </div>
+    </AppBoundary>
   );
 }
 
 export default App;
 
-function Title(props) {
-  return <h1>{props.title}</h1>;
+function Title({ children }) {
+  return <h1 style={{ color: 'dodgerblue' }}>{children}</h1>;
+}
+
+function AppBoundary({ children }) {
+  const style = {
+    margin: '0 auto',
+    width: '640px',
+  };
+  return <div style={style}>{children}</div>;
 }
